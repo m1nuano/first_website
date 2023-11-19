@@ -7,14 +7,19 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "t_product")
 public class Product {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-    @Column
-    private String categoryName;
-    private String name;
-    private String description;
+
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "price")
+    private int price;
 }

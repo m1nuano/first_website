@@ -3,25 +3,24 @@ package com.demo.m1nuano.website.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "t_order")
-public class Order {
+@Table(name = "t_order_item")
+public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    private List<OrderItem> orderItems;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "username")
-    private User user;
+    @JoinColumn(name = "product_id")
+    private Product product;
 }
